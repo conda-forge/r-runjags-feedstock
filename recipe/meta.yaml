@@ -1,4 +1,4 @@
-{% set version = "2.2.1-7" %}
+{% set version = "2.2.2-1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/runjags_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/runjags/runjags_{{ version }}.tar.gz
-  sha256: e81fdb15e59cdceda125d6ae7cf0cde93361ba80b123d51afd1ecdc993f25016
+  sha256: 61f6ced8c7058be7b949c82e558d8898b16bdb64e9999b49a6e92bf564396229
 
 build:
   merge_build_host: true  # [win]
-  number: 2
+  number: 0
   skip: true  # [win]
 
   rpaths:
