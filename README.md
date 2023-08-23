@@ -3,6 +3,7 @@ About r-runjags-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-runjags-feedstock/blob/main/LICENSE.txt)
 
+
 About r-runjags
 ---------------
 
@@ -11,6 +12,7 @@ Home: https://github.com/ku-awdc/runjags
 Package license: GPL-2.0-only
 
 Summary: User-friendly interface utilities for MCMC models via Just Another Gibbs Sampler (JAGS), facilitating the use of parallel (or distributed) processors for multiple chains, automated control of convergence and sample length diagnostics, and evaluation of the performance of a model using drop-k validation or against simulated data. Template model specifications can be generated using a standard lme4-style formula interface to assist users less familiar with the BUGS syntax.  A JAGS extension module provides additional distributions including the Pareto family of distributions, the DuMouchel prior and the half-Cauchy prior.
+
 About r-runjags
 ---------------
 
