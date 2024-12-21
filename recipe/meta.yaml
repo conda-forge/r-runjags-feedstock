@@ -1,6 +1,5 @@
 {% set version = "2.2.2-4" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-runjags
@@ -13,41 +12,39 @@ source:
   sha256: 6f656e4d0620c0806e596ddb4bfec3934534ec17c02da699fcbfd6720a6f424f
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
+  ## NB: no win builds for jags (https://github.com/conda-forge/jags-feedstock)
   skip: true  # [win]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}sed               # [win]
     - {{ posix }}grep              # [win]
     - {{ posix }}autoconf
     - {{ posix }}automake          # [not win]
     - {{ posix }}automake-wrapper  # [win]
-    - {{ posix }}pkg-config
+    - pkg-config
     - {{ posix }}make
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
-
   host:
     - r-base
     - r-coda >=0.17_1
     - r-lattice >=0.20_10
     - jags
-
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-coda >=0.17_1
     - r-lattice >=0.20_10
     - jags
@@ -59,11 +56,9 @@ test:
 
 about:
   home: https://github.com/ku-awdc/runjags
-
   license: GPL-2.0-only
   summary: User-friendly interface utilities for MCMC models via Just Another Gibbs Sampler (JAGS), facilitating the use of parallel (or distributed) processors for multiple chains, automated control of convergence and sample length diagnostics, and evaluation of the performance of a model using drop-k validation or against
     simulated data. Template model specifications can be generated using a standard lme4-style formula interface to assist users less familiar with the BUGS syntax.  A JAGS extension module provides additional distributions including the Pareto family of distributions, the DuMouchel prior and the half-Cauchy prior.
-
   license_family: GPL2
   license_file:
     - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
