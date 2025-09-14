@@ -12,7 +12,7 @@ source:
   sha256: 0eb4c686b815a4a7b23fd0b21811abbdb0188d6b5d1502280d5c04632f4d3851
 
 build:
-  number: 0
+  number: 1
   ## NB: no win builds for jags (https://github.com/conda-forge/jags-feedstock)
   skip: true  # [win]
   rpaths:
